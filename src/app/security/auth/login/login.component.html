@@ -1,0 +1,21 @@
+<mat-card class="center auth-container mat-elevation-z8">
+    <mat-card-title>Iniciar sesión</mat-card-title>
+    <mat-card-content>
+        <form id="register" [formGroup]="loginForm">
+            <mat-form-field class="auth-input center">
+                <mat-label>Correo electrónico</mat-label>
+                <input formControlName="email" matInput type="email" placeholder="Email">
+            </mat-form-field>
+            <mat-form-field class="auth-input center">
+                <mat-label>Contraseña</mat-label>
+                <input formControlName="password" matInput type="password" placeholder="Contraseña">
+            </mat-form-field>
+            <mat-checkbox formControlName="keepLoggedIn">
+                ¿Mantener la sesión iniciada?
+            </mat-checkbox>
+            <mat-card-actions>
+                <button mat-raised-button (click)="login()">Ingresar</button>
+            </mat-card-actions>
+        </form>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,37 @@
+<form [formGroup]="foodConsumedForm" class="form-container">
+    <mat-form-field>
+        <mat-label>Unidad de medida</mat-label>
+        <mat-select formControlName="referenceMeasurements" (selectionChange)="referenceUnitSelection()" required>
+            <ng-container *ngIf="currentFood">
+                <mat-option>--</mat-option>
+                <mat-option *ngIf="checkReferenceMeasurement(currentFood.referenceMeasurements.referenceMassInGrams)" value="referenceMassInGrams">
+                    Gramos (Gr)
+                </mat-option>
+                <mat-option *ngIf="checkReferenceMeasurement(currentFood.referenceMeasurements.referenceVolumeInMililiters)" value="referenceVolumeInMililiters">
+                    Mililitros (Ml)
+                </mat-option>
+                <mat-option *ngIf="currentFood.referenceMeasurements.referenceUnits > 0" value="referenceUnits">
+                    Unidades
+                </mat-option>
+            </ng-container>
+        </mat-select>        
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Cantidad</mat-label>
+        <input matInput type="number" formControlName="quantity" >
+        <button *ngIf="foodConsumedForm.get('quantity')?.value > 0" matSuffix mat-icon-button (click)="foodConsumedForm.get('quantity')?.setValue(0)">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>No de comida del dia</mat-label>
+        <input matInput type="number" formControlName="numberOfPlate">
+        <button *ngIf="foodConsumedForm.get('numberOfPlate')?.value > 0" matSuffix mat-icon-button (click)="foodConsumedForm.get('numberOfPlate')?.setValue(0)">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+</form>
+
+<button [disabled]="!foodConsumedForm.valid" mat-raised-button color="primary" (click)="submitFormValues()" >
+    Continuar
+</button>

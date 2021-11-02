@@ -1,0 +1,19 @@
+<div *ngIf="user" class="options-container">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>perm_identity</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <span>{{ user.userName }}</span>
+        <button mat-menu-item (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            <span>Cerrar sesión</span>
+        </button>
+    </mat-menu>
+</div>
+
+<div>
+    <ul *ngIf="!user" class="auth-options">
+        <li><a [routerLink]="['/login']">Iniciar sessión</a></li>
+        <li><a>Registrarse</a></li>
+    </ul>
+</div>

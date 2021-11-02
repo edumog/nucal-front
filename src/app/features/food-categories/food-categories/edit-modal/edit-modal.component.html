@@ -1,0 +1,20 @@
+<h1>{{ title }}</h1>
+<div style="text-align: center; height: auto;">
+    <mat-dialog-content>
+        <mat-form-field style="width: 90%; margin: 0 0 2em 0;">
+            <mat-label>{{ parameters.inputLabel }}</mat-label>
+            <input matInput [formControl]="nameControl">
+            <app-form-errors [control]="nameControl"></app-form-errors>
+        </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions style="float: right;">
+        <button mat-raised-button color="primary" (click)="submit()">
+            Guargar
+            <mat-icon>save</mat-icon>
+        </button>
+        <button mat-raised-button color="warn" (click)="close()">
+            Cancelar
+            <mat-icon>cancel</mat-icon>
+        </button>
+    </mat-dialog-actions>
+</div>

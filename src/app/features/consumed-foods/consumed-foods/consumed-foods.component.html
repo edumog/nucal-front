@@ -1,0 +1,29 @@
+<div style="width: 90%; margin: 0 auto; padding: 1em;">
+    <mat-card>
+        <mat-card-content>
+            <div *ngIf="isLoading">
+                <mat-spinner style="margin: 3em auto;"></mat-spinner>
+            </div>
+            <div *ngIf="!isLoading">
+                <mat-card-title>Calculador nutricional</mat-card-title>
+                <app-food-selection 
+                [foodCategories]="foodCategoriesCombo$ | async" 
+                [foods]="foodsCombo$ | async" 
+                [selectedFood]="selectedFood$ | async"
+                (foodId)="selectFood($event)">
+            </app-food-selection>
+                <div>
+                    <app-nutritional-information 
+                    [currentFood]="selectedFood$ | async" 
+                    [foodLoadState]="isFoodLoading$ | async" 
+                    [currentConsumption]="currentConsumption$ | async" 
+                    [$currentFood]="selectedFood$"
+                    [user]="user$ | async"
+                    (editedDailyConsumption)="editDailyConsumption($event)"
+                    (currentFoodId)="selectFood($event)">
+                </app-nutritional-information>
+                </div>    
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,0 +1,12 @@
+<div class="result-container">
+  <span>Energia: {{ data.calories }} Kc</span>
+  <ngx-charts-advanced-pie-chart
+  class="chart-container"
+  [view]="[0, 0]"
+  [scheme]="colorScheme"
+  [results]="data.macronutrients"
+  [animations]="true"
+  [label]= "label"
+  >
+  </ngx-charts-advanced-pie-chart>
+</div>

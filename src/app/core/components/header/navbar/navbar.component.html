@@ -1,0 +1,19 @@
+<div class="options-container">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>settings</mat-icon>
+    </button>
+</div>
+<mat-menu #menu="matMenu">
+    <button mat-menu-item [routerLink]="['inicio']">
+        <mat-icon>home</mat-icon>
+        <span>Inicio</span>
+    </button>
+    <button mat-menu-item [routerLink]="['alimentos']">
+        <mat-icon>restaurant</mat-icon>
+        <span>Alimentos</span>
+    </button>
+    <button mat-menu-item [routerLink]="['categorias_de_alimentos']">
+        <mat-icon>category</mat-icon>
+        <span>Categorias alimenticias</span>
+    </button>
+</mat-menu>

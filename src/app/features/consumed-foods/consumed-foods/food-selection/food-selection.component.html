@@ -1,0 +1,28 @@
+<div class="form-container">
+    <mat-form-field>
+        <mat-label>{{ parameters.foodCategoriesControllerLabel }}</mat-label>
+        <mat-select multiple [formControl]="categoriesControl" (selectionChange)="categoriesChanged()">
+            <ng-container *ngIf="foodCategories">
+                <mat-option *ngFor="let foodCategory of foodCategories" [value]="foodCategory.id">
+                    {{ foodCategory.name }}
+                </mat-option>
+            </ng-container>
+        </mat-select>
+        <button *ngIf="categoriesControl.value" matSuffix mat-icon-button (click)="cleanCategories()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>{{ parameters.foodsControllerLabel }}</mat-label>
+        <mat-select (selectionChange)="selectFood($event.value)" [formControl]="foodsControl">
+            <ng-container *ngIf="foods">
+                <mat-option *ngFor="let food of foods | filterFoods:categoriesControl.value" [value]="food.id">
+                    {{ food.name }}
+                </mat-option>
+            </ng-container>
+        </mat-select>
+        <button *ngIf="foodsControl.value" matSuffix mat-icon-button (click)="cleanFoods()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+</div>

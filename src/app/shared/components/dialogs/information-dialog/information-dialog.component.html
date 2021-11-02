@@ -1,0 +1,20 @@
+<span mat-dialog-title class="dialog-title animated-fade">{{ data.title }}</span>
+<mat-dialog-content class="animated-fade-fast">
+    <div [ngSwitch]="data.icon" class="animated-fade-fast text-center">
+        <ng-container *ngSwitchCase="'done'">
+            <span>
+                <img class="dialog-icon" src="https://firebasestorage.googleapis.com/v0/b/portfolio-app-b0dc3.appspot.com/o/success-icon.png?alt=media&token=702b6c1e-abb5-4ca1-815a-41314186aef9">
+            </span>
+        </ng-container>
+        <ng-container *ngSwitchCase="'fail'">
+            <span>
+                <img class="dialog-icon" src="https://firebasestorage.googleapis.com/v0/b/portfolio-app-b0dc3.appspot.com/o/fail-icon.png?alt=media&token=61cd760d-8853-4341-a408-096edaf498a1">
+            </span>
+        </ng-container>
+    </div>
+    <p *ngIf="data.message" class="animated-fade-fast dialog-alert">
+        {{ data.message }}
+    </p>
+<mat-dialog-actions>
+    <button mat-raised-button [mat-dialog-close]="true">Cerrar</button>
+</mat-dialog-actions>

@@ -1,0 +1,72 @@
+/* You can add global styles to this file, and also import other style files */
+
+$bg-color: #3DF552
+$secondary-color:#5C5C5C
+
+.options-container 
+    .mat-icon-button
+        color: $secondary-color
+
+.auth-container
+    margin-top: 8rem
+    width: 40%
+    height: auto
+    padding: 2em
+
+.auth-input
+    width: 100%
+    padding: 0 .5em 0 .3em
+
+.dialog-icon
+    width: 18em 
+    height: 15em
+
+.dialog-alert
+    font-family: 'Noto Sans JP', sans-serif 
+    font-size: 1.5em
+    font-weight: bold
+
+.center
+    margin: 0 auto
+    
+.text-center
+    text-align: center
+
+.animated-fade
+    animation-name: fade
+    animation-duration: 1s
+
+.animated-fade-fast
+    animation-name: fade
+    animation-duration: .5s 
+
+.form-container
+    width: 100%
+    display: flex
+    justify-content: center
+    flex-flow: row wrap
+    .mat-form-field
+        flex-flow: row wrap
+        width: 30%
+        min-width: 180px
+        margin-right: 1.5em
+
+@keyframes fade
+    0% 
+        opacity: 0 
+    50% 
+        opacity: .5    
+    100% 
+        opacity: 1     
+
+.dialog-title
+    font-size: 2em
+    font-family: 'Roboto', sans-serif
+    font-weight: bold
+    font-style: italic
+
+.ngx-charts 
+    float: none !important
+
+.advanced-pie-legend .legend-items-container .legend-items .legend-item .item-label, .advanced-pie-legend .legend-items-container .legend-items .legend-item .item-value
+    margin-top: 4px !important

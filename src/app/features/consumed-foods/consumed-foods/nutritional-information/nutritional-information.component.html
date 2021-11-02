@@ -1,0 +1,49 @@
+<ng-container *ngIf="$currentFood | async">
+    <app-consumed-form [currentFood]="$currentFood | async" (formValues)="getNutritionalInformation($event)">
+    </app-consumed-form>
+</ng-container>
+
+<ng-container *ngIf="consumedFood.food">
+    <div style="margin-top: 1.5em;">
+        <div><button *ngIf="user?.id" mat-raised-button color="primary" (click)="saveChanges()">
+                Guardar
+            </button></div>
+        <h3>{{ consumedFood.food.name }}</h3>
+        <app-result [consumedFood]="consumedFood.food"></app-result>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="currentConsumption && currentConsumption.plates.length > 0 && user?.id" class="mat-elevation-z8">
+    <mat-accordion>
+        <!-- #docregion basic-panel -->
+        <!-- #docregion hide-toggle -->
+        <mat-expansion-panel [expanded]="panelInformationOpenState" (opened)="panelInformationOpenState = true" (closed)="panelInformationOpenState = false">
+            <!-- #enddocregion hide-toggle -->1
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Detalles
+                </mat-panel-title>
+                <mat-panel-description>
+                    Información de los macronutrientes, fibra y calorias
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <app-result [plates]="currentConsumption.plates"></app-result>
+        </mat-expansion-panel>
+        <!-- #enddocregion basic-panel -->
+        <mat-expansion-panel (opened)="panelListOpenState = true" (closed)="panelListOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Alimentos consumidos
+                </mat-panel-title>
+                <mat-panel-description>
+                    Listado editable con los alimentos consumidos
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <app-tables [plates]="currentConsumption.plates"
+                (erasedPlate)="deletePlate($event.index, currentConsumption.plates, currentConsumption)"
+                (erasedFood)="deleteFood($event, currentConsumption)"
+                (editedFoodQuantity)="editQuantity($event, currentConsumption)">
+            </app-tables>
+        </mat-expansion-panel>
+    </mat-accordion>
+</ng-container>

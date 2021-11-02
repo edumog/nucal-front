@@ -1,0 +1,10 @@
+<header class="header">
+    <div>
+        <a [routerLink]="['inicio']"><h1>Calculadora Nutricional</h1></a>
+        <app-auth-options [user]="user$ | async" (logoutEvent)="handleLogoutEvent($event)"></app-auth-options>
+    </div>
+    <nav *ngIf="isAdministrator">
+        <app-navbar></app-navbar>
+    </nav>      
+</header>
+

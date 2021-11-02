@@ -1,0 +1,43 @@
+<div style="width: 90%; margin: 0 auto; padding: 1em;">
+    <mat-card>
+        <div *ngIf="isLoading">
+            <mat-spinner style="margin: 3em auto;"></mat-spinner>
+        </div>
+        
+        <div *ngIf="!isLoading">
+            <mat-card-title>{{ parameters.title }}</mat-card-title>
+            <mat-card-content>
+                <mat-card-subtitle>
+                    {{ parameters.tableTitle }}
+                </mat-card-subtitle>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary" class="mat-elevation-z2" (click)="openEditModal()">
+                        {{ parameters.buttonNew }}
+                        <mat-icon>add_circle_outline</mat-icon>
+                    </button>
+                </mat-card-actions>
+                <table mat-table class="mat-elevation-z8" [dataSource]="dataSource" style="width: 100%;">
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef style="width: 80%;"> Nombre </th>
+                        <td mat-cell *matCellDef="let foodCategory"> {{ foodCategory.name }} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="actions">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let foodCategory" style="text-align: right;">
+                            <button mat-mini-fab color="basic" (click)="openEditModal(foodCategory)">
+                                <mat-icon>mode_edit</mat-icon>
+                            </button>
+                            <button mat-mini-fab color="warn" (click)="delete(foodCategory.id)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </mat-card-content>
+        </div>
+    </mat-card>
+</div>

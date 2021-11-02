@@ -1,0 +1,38 @@
+<mat-card class="center auth-container mat-elevation-z8">
+    <mat-card-title>Registrarse</mat-card-title>
+    <mat-card-content>
+        <mat-card-subtitle>Cree su cuenta</mat-card-subtitle>
+        <form id="register" [formGroup]="registerForm">
+            <mat-form-field class="auth-input center">
+                <mat-label>Nombre de usuario</mat-label>
+                <input formControlName="userName" matInput type="text" placeholder="Nombre de usuario">
+            </mat-form-field>
+            <mat-form-field class="auth-input center">
+                <mat-label>Nombre</mat-label>
+                <input formControlName="firstName" matInput type="text" placeholder="Nombre">
+            </mat-form-field>
+            <mat-form-field class="auth-input center">
+                <mat-label>Apellido</mat-label>
+                <input formControlName="lastName" matInput type="text" placeholder="Apellido">
+            </mat-form-field>
+            <mat-form-field class="auth-input center">
+                <mat-label>Correo electrónico</mat-label>
+                <input formControlName="email" matInput type="email" placeholder="Email">
+            </mat-form-field>
+            <mat-form-field class="auth-input center">
+                <mat-label>Contraseña</mat-label>
+                <input formControlName="password" matInput type="password" placeholder="Contraseña">
+            </mat-form-field>
+            <mat-form-field class="auth-input center">
+                <mat-label>Confirmar contraseña</mat-label>
+                <input formControlName="passwordConfirmation" matInput type="password" placeholder="Confirmar contraseña">
+            </mat-form-field>
+            <mat-checkbox formControlName="keepLoggedIn">
+                ¿Mantener la sesión iniciada?
+            </mat-checkbox>
+            <mat-card-actions>
+                <button mat-raised-button (click)="createUser()">Registrarse</button>
+            </mat-card-actions>
+        </form>
+    </mat-card-content>
+</mat-card>

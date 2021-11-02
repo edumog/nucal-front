@@ -1,0 +1,39 @@
+<h2>Listado de alimentos consumidos</h2>
+<div *ngFor="let plate of plates; let plateIndex = index">
+    <div>
+        <h3>Comida del dia {{ plate.numberOfPlate }}</h3>
+        <button mat-mini-fab color="warn" (click)="deletePlate(plateIndex)">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+    <table mat-table [dataSource] = "plate.foods">
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let food"> {{food.name}} </td>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </ng-container>
+        <ng-container matColumnDef="unitMeasurement">
+            <th mat-header-cell *matHeaderCellDef> Cantidad consumida </th>
+            <td mat-cell *matCellDef="let food; index as foodIndex">
+                {{ consumedValues[plateIndex].values[foodIndex].unitMeasurement }}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef> Cantidad consumida </th>
+            <td mat-cell *matCellDef="let food; index as foodIndex">
+                <mat-form-field class="example-form-field" appearance="fill">
+                    <input matInput type="number" [value]="consumedValues[plateIndex].values[foodIndex].value" (change)="editQuantity($event, consumedValues[plateIndex].values[foodIndex].unitMeasurement, foodIndex, plateIndex)">
+                  </mat-form-field>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let food; index as foodIndex" style="text-align: right;">
+                <button mat-mini-fab color="warn" (click)="deleteFood(foodIndex, plateIndex)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+    </table>
+</div>
